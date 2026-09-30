@@ -15,8 +15,7 @@ public static class StudentContractErrors
             "კონტრაქტის ნომერი უნდა იყოს ფორმატით 0.000 (მაგალითად 6.001)");
 
     public static Error ContractNumberAlreadyExists =>
-        Error.Conflict(nameof(ContractNumberAlreadyExists),
-            "ამ სასწავლო წელში კონტრაქტი ასეთი ნომრით უკვე არსებობს");
+        Error.Conflict(nameof(ContractNumberAlreadyExists), "ამ სასწავლო წელში კონტრაქტი ასეთი ნომრით უკვე არსებობს");
 
     public static Error ContractDateIsRequired =>
         Error.Problem(nameof(ContractDateIsRequired), "კონტრაქტის თარიღი შევსებული უნდა იყოს");
@@ -32,8 +31,7 @@ public static class StudentContractErrors
         Error.Problem(nameof(StudentStatusNotFound), "მოსწავლის სტატუსი ვერ მოიძებნა");
 
     public static Error DesiredMonthlyPaymentDayIsOutOfRange =>
-        Error.Problem(nameof(DesiredMonthlyPaymentDayIsOutOfRange),
-            "გადახდის სასურველი დღე უნდა იყოს 1-დან 28-მდე");
+        Error.Problem(nameof(DesiredMonthlyPaymentDayIsOutOfRange), "გადახდის სასურველი დღე უნდა იყოს 1-დან 28-მდე");
 
     public static Error CourseNotFound => Error.Problem(nameof(CourseNotFound), "საგანი ვერ მოიძებნა");
 

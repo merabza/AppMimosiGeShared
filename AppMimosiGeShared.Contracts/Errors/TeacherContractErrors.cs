@@ -46,8 +46,7 @@ public static class TeacherContractErrors
         Error.Problem(nameof(WorkHourGroupNotFound), "სამუშაო საათების ჯგუფი ვერ მოიძებნა");
 
     public static Error WorkHoursStartMustBeBeforeEnd =>
-        Error.Problem(nameof(WorkHoursStartMustBeBeforeEnd),
-            "სამუშაოს დაწყების დრო დასრულების დროზე ადრე უნდა იყოს");
+        Error.Problem(nameof(WorkHoursStartMustBeBeforeEnd), "სამუშაოს დაწყების დრო დასრულების დროზე ადრე უნდა იყოს");
 
     public static Error ContractEndDateIsBeforeContractDate =>
         Error.Problem(nameof(ContractEndDateIsBeforeContractDate),

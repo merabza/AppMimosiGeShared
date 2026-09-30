@@ -57,4 +57,30 @@ public static class AppMimosiGeApiRoutes
         // DELETE api/v1/teachercontracts/{id:int}
         public const string Delete = "/{id:int}";
     }
+
+    public static class GroupsRoute
+    {
+        public const string GroupsBase = "/groups";
+
+        // GET api/v1/groups/rowsdata?filterSortRequest={base64}
+        public const string RowsData = "/rowsdata";
+
+        // GET api/v1/groups/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/groups/studentcontracts?academicYearId={id}
+        public const string StudentContracts = "/studentcontracts";
+
+        // GET api/v1/groups/{grpId:int}
+        public const string GetOne = "/{grpId:int}";
+
+        // POST api/v1/groups
+        public const string Create = "";
+
+        // PUT api/v1/groups/{grpId:int}
+        public const string Update = "/{grpId:int}";
+
+        // DELETE api/v1/groups/{grpId:int}
+        public const string Delete = "/{grpId:int}";
+    }
 }
