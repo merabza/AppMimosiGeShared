@@ -103,4 +103,21 @@ public static class AppMimosiGeApiRoutes
         // GET api/v1/lessongenerator/log?grpId={id}
         public const string Log = "/log";
     }
+
+    public static class LessonsRoute
+    {
+        public const string LessonsBase = "/lessons";
+
+        // GET api/v1/lessons/rowsdata?filterSortRequest={base64}
+        public const string RowsData = "/rowsdata";
+
+        // GET api/v1/lessons/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/lessons/{lessonId:int}
+        public const string GetOne = "/{lessonId:int}";
+
+        // PUT api/v1/lessons/{lessonId:int}
+        public const string Update = "/{lessonId:int}";
+    }
 }
