@@ -76,6 +76,10 @@ public static class GroupErrors
         Error.Problem(nameof(DayTimePlacePeriodsOverlap),
             "ერთ კვირის დღეზე ჯგუფს ორი განრიგი ვერ ექნება: ერთი დღის განრიგების პერიოდები ერთმანეთს ფარავს");
 
+    public static Error StudentPeriodsOverlap =>
+        Error.Problem(nameof(StudentPeriodsOverlap),
+            "ერთი მოსწავლე ჯგუფში ერთ დღეს ორჯერ ვერ იქნება: ერთი კონტრაქტის სტრიქონების პერიოდები ერთმანეთს ფარავს");
+
     public static Error RowNotFound =>
         Error.Problem(nameof(RowNotFound), "მასწავლებლის, მოსწავლის ან განრიგის სტრიქონი ამ ჯგუფს არ ეკუთვნის");
 

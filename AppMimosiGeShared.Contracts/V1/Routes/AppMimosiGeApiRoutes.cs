@@ -83,4 +83,24 @@ public static class AppMimosiGeApiRoutes
         // DELETE api/v1/groups/{grpId:int}
         public const string Delete = "/{grpId:int}";
     }
+
+    public static class LessonGeneratorRoute
+    {
+        public const string LessonGeneratorBase = "/lessongenerator";
+
+        // POST api/v1/lessongenerator/groups/{grpId:int}?dryRun={bool}
+        public const string GroupLessons = "/groups/{grpId:int}";
+
+        // POST api/v1/lessongenerator/groups/{grpId:int}/lastlesson
+        public const string GroupLastLesson = "/groups/{grpId:int}/lastlesson";
+
+        // POST api/v1/lessongenerator/dirtygroups?dryRun={bool}
+        public const string DirtyGroups = "/dirtygroups";
+
+        // POST api/v1/lessongenerator/allgroups?dryRun={bool}
+        public const string AllGroups = "/allgroups";
+
+        // GET api/v1/lessongenerator/log?grpId={id}
+        public const string Log = "/log";
+    }
 }
