@@ -146,4 +146,35 @@ public static class AppMimosiGeApiRoutes
         // DELETE api/v1/payments/{paymentId:int}
         public const string Delete = "/{paymentId:int}";
     }
+
+    public static class ChargesAndPaymentsRoute
+    {
+        public const string ChargesAndPaymentsBase = "/chargesandpayments";
+
+        // GET api/v1/chargesandpayments/rowsdata?filterSortRequest={base64}
+        public const string RowsData = "/rowsdata";
+
+        // GET api/v1/chargesandpayments/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/chargesandpayments/studentcontracts?academicYearId={id}
+        public const string StudentContracts = "/studentcontracts";
+    }
+
+    public static class DepositsRoute
+    {
+        public const string DepositsBase = "/deposits";
+
+        // GET api/v1/deposits/rows?academicYearId={id}&maximum={number}&dateTo={yyyy-MM-dd}&filter={filter|call}
+        public const string Rows = "/rows";
+
+        // GET api/v1/deposits/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // POST api/v1/deposits/recount
+        public const string Recount = "/recount";
+
+        // POST api/v1/deposits/fullrecount
+        public const string FullRecount = "/fullrecount";
+    }
 }
