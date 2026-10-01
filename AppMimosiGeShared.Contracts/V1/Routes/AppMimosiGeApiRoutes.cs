@@ -177,4 +177,30 @@ public static class AppMimosiGeApiRoutes
         // POST api/v1/deposits/fullrecount
         public const string FullRecount = "/fullrecount";
     }
+
+    public static class CrmCallsRoute
+    {
+        public const string CrmCallsBase = "/crmcalls";
+
+        // GET api/v1/crmcalls/rowsdata?filterSortRequest={base64}
+        public const string RowsData = "/rowsdata";
+
+        // GET api/v1/crmcalls/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/crmcalls/studentcontracts?academicYearId={id}
+        public const string StudentContracts = "/studentcontracts";
+
+        // GET api/v1/crmcalls/{crmCallId:int}
+        public const string GetOne = "/{crmCallId:int}";
+
+        // POST api/v1/crmcalls
+        public const string Create = "";
+
+        // PUT api/v1/crmcalls/{crmCallId:int}
+        public const string Update = "/{crmCallId:int}";
+
+        // DELETE api/v1/crmcalls/{crmCallId:int}
+        public const string Delete = "/{crmCallId:int}";
+    }
 }
