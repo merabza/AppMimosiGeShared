@@ -120,4 +120,30 @@ public static class AppMimosiGeApiRoutes
         // PUT api/v1/lessons/{lessonId:int}
         public const string Update = "/{lessonId:int}";
     }
+
+    public static class PaymentsRoute
+    {
+        public const string PaymentsBase = "/payments";
+
+        // GET api/v1/payments/rowsdata?filterSortRequest={base64}
+        public const string RowsData = "/rowsdata";
+
+        // GET api/v1/payments/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/payments/studentcontracts?academicYearId={id}
+        public const string StudentContracts = "/studentcontracts";
+
+        // GET api/v1/payments/{paymentId:int}
+        public const string GetOne = "/{paymentId:int}";
+
+        // POST api/v1/payments
+        public const string Create = "";
+
+        // PUT api/v1/payments/{paymentId:int}
+        public const string Update = "/{paymentId:int}";
+
+        // DELETE api/v1/payments/{paymentId:int}
+        public const string Delete = "/{paymentId:int}";
+    }
 }
