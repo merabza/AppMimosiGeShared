@@ -203,4 +203,77 @@ public static class AppMimosiGeApiRoutes
         // DELETE api/v1/crmcalls/{crmCallId:int}
         public const string Delete = "/{crmCallId:int}";
     }
+
+    public static class WorkHoursRoute
+    {
+        public const string WorkHoursBase = "/workhours";
+
+        // GET api/v1/workhours/rowsdata?filterSortRequest={base64}
+        public const string RowsData = "/rowsdata";
+
+        // GET api/v1/workhours/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/workhours/{whId:int}
+        public const string GetOne = "/{whId:int}";
+
+        // POST api/v1/workhours
+        public const string Create = "";
+
+        // PUT api/v1/workhours/{whId:int}
+        public const string Update = "/{whId:int}";
+
+        // DELETE api/v1/workhours/{whId:int}
+        public const string Delete = "/{whId:int}";
+
+        // POST api/v1/workhours/start
+        public const string Start = "/start";
+
+        // POST api/v1/workhours/end
+        public const string End = "/end";
+
+        // POST api/v1/workhours/autogenerate
+        public const string AutoGenerate = "/autogenerate";
+    }
+
+    public static class SalaryRoute
+    {
+        public const string SalaryBase = "/salary";
+
+        // GET api/v1/salary/headers
+        public const string Headers = "/headers";
+
+        // GET api/v1/salary/formlookups
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/salary/{shId:int}
+        public const string GetOne = "/{shId:int}";
+
+        // POST api/v1/salary
+        public const string Create = "";
+
+        // PUT api/v1/salary/{shId:int}
+        public const string Update = "/{shId:int}";
+
+        // DELETE api/v1/salary/{shId:int}
+        public const string Delete = "/{shId:int}";
+
+        // POST api/v1/salary/{shId:int}/parts
+        public const string CreatePart = "/{shId:int}/parts";
+
+        // PUT api/v1/salary/parts/{spId:int}
+        public const string UpdatePart = "/parts/{spId:int}";
+
+        // DELETE api/v1/salary/parts/{spId:int}
+        public const string DeletePart = "/parts/{spId:int}";
+
+        // POST api/v1/salary/{shId:int}/count
+        public const string Count = "/{shId:int}/count";
+
+        // GET api/v1/salary/{shId:int}/transferfile
+        public const string TransferFile = "/{shId:int}/transferfile";
+
+        // GET api/v1/salary/declarationfile?month=yyyy-MM-dd
+        public const string DeclarationFile = "/declarationfile";
+    }
 }
