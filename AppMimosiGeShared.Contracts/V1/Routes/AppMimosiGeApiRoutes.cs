@@ -276,4 +276,21 @@ public static class AppMimosiGeApiRoutes
         // GET api/v1/salary/declarationfile?month=yyyy-MM-dd
         public const string DeclarationFile = "/declarationfile";
     }
+
+    public static class ReportsRoute
+    {
+        public const string ReportsBase = "/reports";
+
+        // GET api/v1/reports/catalog
+        public const string Catalog = "/catalog";
+
+        // GET api/v1/reports/lookups
+        public const string Lookups = "/lookups";
+
+        // GET api/v1/reports/{key}?startDate=yyyy-MM-dd&endDate=yyyy-MM-dd&teacherId=&courseId=&studentId=
+        public const string Run = "/{key}";
+
+        // GET api/v1/reports/{key}/excel?startDate=…&endDate=…
+        public const string Excel = "/{key}/excel";
+    }
 }
