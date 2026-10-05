@@ -17,6 +17,9 @@ public static class StudentContractErrors
     public static Error ContractNumberAlreadyExists =>
         Error.Conflict(nameof(ContractNumberAlreadyExists), "ამ სასწავლო წელში კონტრაქტი ასეთი ნომრით უკვე არსებობს");
 
+    public static Error StudentAlreadyHasContract =>
+        Error.Conflict(nameof(StudentAlreadyHasContract), "ამ მოსწავლეს ამ სასწავლო წელში კონტრაქტი უკვე აქვს");
+
     public static Error ContractDateIsRequired =>
         Error.Problem(nameof(ContractDateIsRequired), "კონტრაქტის თარიღი შევსებული უნდა იყოს");
 

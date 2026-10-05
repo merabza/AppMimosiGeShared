@@ -19,6 +19,9 @@ public static class AppMimosiGeApiRoutes
         // GET api/v1/studentcontracts/humans?search={text}
         public const string Humans = "/humans";
 
+        // GET api/v1/studentcontracts/nextnumber?academicYearId={id}
+        public const string NextNumber = "/nextnumber";
+
         // GET api/v1/studentcontracts/{scId:int}
         public const string GetOne = "/{scId:int}";
 
@@ -275,6 +278,28 @@ public static class AppMimosiGeApiRoutes
 
         // GET api/v1/salary/declarationfile?month=yyyy-MM-dd
         public const string DeclarationFile = "/declarationfile";
+    }
+
+    public static class AcademicYearsRoute
+    {
+        // GET api/v1/academicyears
+        public const string AcademicYearsBase = "/academicyears";
+
+        public const string List = "";
+    }
+
+    public static class AcademicYearRoute
+    {
+        public const string AcademicYearBase = "/academicyear";
+
+        // GET api/v1/academicyear/info
+        public const string Info = "/info";
+
+        // POST api/v1/academicyear/create?dryRun={bool}
+        public const string Create = "/create";
+
+        // POST api/v1/academicyear/{ayId:int}/closegroups?closeDate=yyyy-MM-dd&dryRun={bool}
+        public const string CloseGroups = "/{ayId:int}/closegroups";
     }
 
     public static class ReportsRoute
