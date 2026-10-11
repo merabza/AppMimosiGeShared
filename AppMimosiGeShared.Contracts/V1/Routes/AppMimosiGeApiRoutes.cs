@@ -146,6 +146,9 @@ public static class AppMimosiGeApiRoutes
         // PUT api/v1/payments/{paymentId:int}
         public const string Update = "/{paymentId:int}";
 
+        // PUT api/v1/payments/{paymentId:int}/checked
+        public const string Checked = "/{paymentId:int}/checked";
+
         // DELETE api/v1/payments/{paymentId:int}
         public const string Delete = "/{paymentId:int}";
     }
