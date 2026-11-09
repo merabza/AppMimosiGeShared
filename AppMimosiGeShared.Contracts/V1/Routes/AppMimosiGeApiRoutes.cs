@@ -153,6 +153,30 @@ public static class AppMimosiGeApiRoutes
         public const string Delete = "/{paymentId:int}";
     }
 
+    //ბანკის ჩარიცხვები და მათი განაწილება მოსწავლეებზე (TBC_INTEGRATION.md, D164)
+    public static class BankTransactionsRoute
+    {
+        public const string BankTransactionsBase = "/banktransactions";
+
+        // GET api/v1/banktransactions?dateFrom=yyyy-MM-dd&dateTo=yyyy-MM-dd&filter={unallocated|ignored}
+        public const string List = "";
+
+        // GET api/v1/banktransactions/{bankTransactionId:int}
+        public const string GetOne = "/{bankTransactionId:int}";
+
+        // GET api/v1/banktransactions/studentcontracts?academicYearId={id}
+        public const string StudentContracts = "/studentcontracts";
+
+        // POST api/v1/banktransactions/import?dateFrom=yyyy-MM-dd&dateTo=yyyy-MM-dd&dryRun={bool}
+        public const string Import = "/import";
+
+        // PUT api/v1/banktransactions/{bankTransactionId:int}/allocation
+        public const string Allocation = "/{bankTransactionId:int}/allocation";
+
+        // PUT api/v1/banktransactions/{bankTransactionId:int}/ignored
+        public const string Ignored = "/{bankTransactionId:int}/ignored";
+    }
+
     public static class ChargesAndPaymentsRoute
     {
         public const string ChargesAndPaymentsBase = "/chargesandpayments";
