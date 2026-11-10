@@ -62,6 +62,16 @@ public static class BankTransactionErrors
         Error.Problem(nameof(ManualPaymentOnIntegratedAccount),
             "ამ ანგარიშის გადახდები ბანკიდან ავტომატურად შემოდის: ხელით შეყვანა არ შეიძლება, გაანაწილეთ ჩარიცხვების გვერდზე");
 
+    //ბანკის ლიმიტი (საქართველოს ბანკი: ამონაწერი 1-ჯერ წუთში ანგარიშზე): 429 და Retry-After წამებში, თუ ბანკმა გამოგზავნა
+    public static Error BankRateLimitExceeded(int? retryAfterSeconds)
+    {
+        return Error.Failure(nameof(BankRateLimitExceeded),
+            retryAfterSeconds is { } seconds
+                ? string.Create(CultureInfo.InvariantCulture,
+                    $"ბანკი ასე ხშირ მოთხოვნას არ იღებს: სცადეთ {seconds} წამში")
+                : "ბანკი ასე ხშირ მოთხოვნას არ იღებს: სცადეთ ერთ წუთში");
+    }
+
     //ბანკის problem+json პასუხი: HTTP სტატუსი, ბანკის შეცდომის კოდი და სათაური (პერსონალური მონაცემები მათში არ არის)
     public static Error BankApiError(int status, string? code, string? title)
     {

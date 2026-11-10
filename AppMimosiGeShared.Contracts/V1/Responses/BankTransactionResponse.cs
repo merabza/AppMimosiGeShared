@@ -4,10 +4,11 @@ using System.Collections.Generic;
 namespace AppMimosiGeShared.Contracts.V1.Responses;
 
 /// <summary>
-///     ერთი ჩარიცხვა ბანკის ველებით და განაწილებით (გადახდები)
+///     ერთი ჩარიცხვა ბანკის ველებით და განაწილებით (გადახდები); BankName: ანგარიშის ბანკი (BankAccounts)
 /// </summary>
 public sealed record BankTransactionResponse(
     int Id,
+    string BankName,
     DateTime TransactionDate,
     decimal Amount,
     string Currency,
