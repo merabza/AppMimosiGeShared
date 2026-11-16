@@ -36,6 +36,14 @@ public static class LessonErrors
     public static Error StudentRowNotFound =>
         Error.Problem(nameof(StudentRowNotFound), "მოსწავლის სტრიქონი ამ გაკვეთილს არ ეკუთვნის");
 
+    public static Error NotHeldLessonCannotHavePresentStudents =>
+        Error.Problem(nameof(NotHeldLessonCannotHavePresentStudents),
+            "გაუქმებულ გაკვეთილს დამსწრე მოსწავლე ვერ ექნება: მოხსენით დასწრება ან სტატუსი შეცვალეთ \"არ გაუქმებულა\"-თი");
+
+    public static Error NotHeldLessonCannotHaveRecoverDate =>
+        Error.Problem(nameof(NotHeldLessonCannotHaveRecoverDate),
+            "გაუქმებულ გაკვეთილს აღდგენის თარიღი ვერ ექნება: წაშალეთ თარიღი ან სტატუსი შეცვალეთ \"არ გაუქმებულა\"-თი");
+
     public static Error FilterSortRequestIsInvalid =>
         Error.Problem(nameof(FilterSortRequestIsInvalid), "სიის ფილტრის ან დალაგების პარამეტრები არასწორია");
 }
