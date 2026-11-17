@@ -116,4 +116,20 @@ public static class GroupErrors
             $"ამიტომ გენერატორი მათ ვეღარ წაშლის: {dates}. შეასწორეთ თარიღები ან ჯერ ჟურნალში გაასუფთავეთ ამ " +
             "გაკვეთილების მონაცემები");
     }
+
+    //მასწავლებლის დროების გადაფარვა სხვა ჯგუფთან (რეპორტი r18, D178). overlaps: გადაფარვების აღწერები რიგით, პირველი
+    //10 ჩამოითვლება
+    public static Error TeacherTimesOverlap(IReadOnlyCollection<string> overlaps)
+    {
+        const int shownOverlapsCount = 10;
+        string list = string.Join("; ", overlaps.Take(shownOverlapsCount));
+        if (overlaps.Count > shownOverlapsCount)
+        {
+            list += string.Create(CultureInfo.InvariantCulture, $" და სხვა, სულ {overlaps.Count}");
+        }
+
+        return Error.Conflict(nameof(TeacherTimesOverlap),
+            "ჯგუფი არ შეინახება: მის მასწავლებელს იმავე დროს სხვა ჯგუფშიც აქვს გაკვეთილი (რეპორტი „მასწავლებლების " +
+            $"დროების გადაფარვა\"): {list}. შეასწორეთ მასწავლებლების ან განრიგის თარიღები, დრო ან კვირის დღე");
+    }
 }

@@ -63,4 +63,13 @@ public static class LessonErrors
             "უნდა წაშალოს, ამიტომ მათ დასწრებას, თემას, შეფასებას და კომენტარებს ვეღარ შეუტანთ: " +
             $"{string.Join(", ", studentNames)}. თუ მოსწავლე გაკვეთილს დაესწრო, ჯერ ჯგუფში მისი თარიღები შეასწორეთ");
     }
+
+    //მასწავლებლის დროების გადაფარვა გაკვეთილებში (D178). teacherName: გაკვეთილის ჩამტარებელი (შემცვლელი, თუ არის);
+    //lessons: მისი სხვა გაკვეთილების აღწერები, რომლებიც ამ გაკვეთილის დროს ფარავს
+    public static Error TeacherHasAnotherLessonAtThisTime(string teacherName, IEnumerable<string> lessons)
+    {
+        return Error.Conflict(nameof(TeacherHasAnotherLessonAtThisTime),
+            $"{teacherName} ამ გაკვეთილის დროს სხვა გაკვეთილს ატარებს: {string.Join("; ", lessons)}. ერთი " +
+            "მასწავლებელი ერთსა და იმავე დროს ორ გაკვეთილს ვერ ჩაატარებს: შეცვალეთ შემცვლელი ან აღდგენის თარიღი");
+    }
 }
