@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using SystemTools.SharedKernel;
 
 namespace AppMimosiGeShared.Contracts.Errors;
@@ -44,6 +45,22 @@ public static class LessonErrors
         Error.Problem(nameof(NotHeldLessonCannotHaveRecoverDate),
             "გაუქმებულ გაკვეთილს აღდგენის თარიღი ვერ ექნება: წაშალეთ თარიღი ან სტატუსი შეცვალეთ \"არ გაუქმებულა\"-თი");
 
+    //გაკვეთილების გენერატორის შეცდომა 11 (რეპორტი r13, D177)
+    public static Error ExtraLessonCannotHaveEnteredData =>
+        Error.Conflict(nameof(ExtraLessonCannotHaveEnteredData),
+            "ჯგუფის ახლანდელი მონაცემებით (განრიგი, მასწავლებლები, მოსწავლეები, გაუქმების თარიღი) ეს გაკვეთილი ზედმეტია " +
+            "და გენერატორმა ის უნდა წაშალოს, ამიტომ მოსწავლეებს დასწრებას, თემას, შეფასებას და კომენტარებს ვეღარ " +
+            "შეუტანთ. თუ გაკვეთილი ჩატარდა, ჯერ ჯგუფი შეასწორეთ");
+
     public static Error FilterSortRequestIsInvalid =>
         Error.Problem(nameof(FilterSortRequestIsInvalid), "სიის ფილტრის ან დალაგების პარამეტრები არასწორია");
+
+    //გაკვეთილების გენერატორის შეცდომა 14 (რეპორტი r13, D177)
+    public static Error ExtraStudentsCannotHaveEnteredData(IEnumerable<string> studentNames)
+    {
+        return Error.Conflict(nameof(ExtraStudentsCannotHaveEnteredData),
+            "ჯგუფის ახლანდელი მონაცემებით ამ მოსწავლეების სტრიქონები გაკვეთილში ზედმეტია და გენერატორმა ისინი " +
+            "უნდა წაშალოს, ამიტომ მათ დასწრებას, თემას, შეფასებას და კომენტარებს ვეღარ შეუტანთ: " +
+            $"{string.Join(", ", studentNames)}. თუ მოსწავლე გაკვეთილს დაესწრო, ჯერ ჯგუფში მისი თარიღები შეასწორეთ");
+    }
 }

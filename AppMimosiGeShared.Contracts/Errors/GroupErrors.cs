@@ -1,3 +1,7 @@
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Linq;
 using SystemTools.SharedKernel;
 
 namespace AppMimosiGeShared.Contracts.Errors;
@@ -93,4 +97,23 @@ public static class GroupErrors
 
     public static Error FilterSortRequestIsInvalid =>
         Error.Problem(nameof(FilterSortRequestIsInvalid), "სიის ფილტრის ან დალაგების პარამეტრები არასწორია");
+
+    //გაკვეთილების გენერატორის შეცდომები 11 და 14 (რეპორტი r13, D177). lessonDates: დალაგებული, პირველი 10 ჩამოითვლება
+    public static Error ChangeCreatesLessonsWithErrors(IReadOnlyCollection<DateTime> lessonDates)
+    {
+        const int shownDatesCount = 10;
+        string dates = string.Join(", ",
+            lessonDates.Take(shownDatesCount)
+                .Select(date => date.ToString("dd.MM.yyyy HH:mm", CultureInfo.InvariantCulture)));
+        if (lessonDates.Count > shownDatesCount)
+        {
+            dates += string.Create(CultureInfo.InvariantCulture, $" და სხვა, სულ {lessonDates.Count}");
+        }
+
+        return Error.Conflict(nameof(ChangeCreatesLessonsWithErrors),
+            "ცვლილება შეცდომიან გაკვეთილებს შექმნიდა (რეპორტი „შეცდომიანი გაკვეთილები\"): ეს გაკვეთილები ან მათი " +
+            "ზოგიერთი მოსწავლე ზედმეტი გახდებოდა, ჟურნალში კი დასწრება, თემა, შეფასება ან კომენტარი აქვთ შეტანილი, " +
+            $"ამიტომ გენერატორი მათ ვეღარ წაშლის: {dates}. შეასწორეთ თარიღები ან ჯერ ჟურნალში გაასუფთავეთ ამ " +
+            "გაკვეთილების მონაცემები");
+    }
 }
