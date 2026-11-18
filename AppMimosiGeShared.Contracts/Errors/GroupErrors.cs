@@ -59,6 +59,12 @@ public static class GroupErrors
     public static Error LessonStartTimeNotFound =>
         Error.Problem(nameof(LessonStartTimeNotFound), "გაკვეთილის დაწყების დრო ვერ მოიძებნა");
 
+    //რეპორტი r22 (D181): გაკვეთილის თეორიული თარიღები განრიგის დღე + დაწყების დროა
+    public static Error LessonStartTimeIsMidnight =>
+        Error.Problem(nameof(LessonStartTimeIsMidnight),
+            "გაკვეთილი 00:00-ზე ვერ დაიწყება: ასეთი განრიგით გაკვეთილების თეორიული თარიღები 00:00:00 გამოვა " +
+            "(რეპორტი „კვირის დღეების არასწორი ცვლილებები\"). აირჩიეთ სხვა დაწყების დრო");
+
     public static Error RoomNotFound => Error.Problem(nameof(RoomNotFound), "ოთახი ვერ მოიძებნა");
 
     public static Error HoursCountMustBePositive =>
@@ -90,6 +96,19 @@ public static class GroupErrors
     public static Error GroupStudentIsInUse =>
         Error.Conflict(nameof(GroupStudentIsInUse),
             "მოსწავლის ჯგუფიდან წაშლა შეუძლებელია: მას ამ ჯგუფში უკვე აქვს გაკვეთილები. წაშლის ნაცვლად მიუთითეთ დასრულების თარიღი");
+
+    //D181: დღემდე დაწყებული განრიგის სტრიქონის კვირის დღე ადგილზე არ იცვლება
+    public static Error StartedDayTimePlaceWeekDayCannotChange =>
+        Error.Conflict(nameof(StartedDayTimePlaceWeekDayCannotChange),
+            "განრიგის სტრიქონის კვირის დღის შეცვლა შეუძლებელია: სტრიქონი დღემდე დაიწყო და ცვლილება მის წარსულ " +
+            "გაკვეთილებსაც სხვა დღეზე გადაიტანდა. შეცვლის ნაცვლად სტრიქონს მიუთითეთ დასრულების თარიღი და ახალი " +
+            "კვირის დღე ახალ სტრიქონად დაამატეთ");
+
+    //D181: დღემდე დაწყებული განრიგის სტრიქონი არ იშლება
+    public static Error StartedDayTimePlaceCannotBeRemoved =>
+        Error.Conflict(nameof(StartedDayTimePlaceCannotBeRemoved),
+            "განრიგის სტრიქონის წაშლა შეუძლებელია: სტრიქონი დღემდე დაიწყო და წაშლა მის წარსულ გაკვეთილებსაც " +
+            "წაშლიდა. წაშლის ნაცვლად მიუთითეთ დასრულების თარიღი");
 
     public static Error GroupIsInUse =>
         Error.Conflict(nameof(GroupIsInUse),
