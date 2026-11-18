@@ -121,6 +121,25 @@ public static class GroupErrors
     //10 ჩამოითვლება
     public static Error TeacherTimesOverlap(IReadOnlyCollection<string> overlaps)
     {
+        return Error.Conflict(nameof(TeacherTimesOverlap),
+            "ჯგუფი არ შეინახება: მის მასწავლებელს იმავე დროს სხვა ჯგუფშიც აქვს გაკვეთილი (რეპორტი „მასწავლებლების " +
+            $"დროების გადაფარვა\"): {OverlapsList(overlaps)}. შეასწორეთ მასწავლებლების ან განრიგის თარიღები, დრო ან " +
+            "კვირის დღე");
+    }
+
+    //მოსწავლის დროების გადაფარვა სხვა ჯგუფთან (რეპორტი r19, D179). overlaps: გადაფარვების აღწერები რიგით, პირველი
+    //10 ჩამოითვლება
+    public static Error StudentTimesOverlap(IReadOnlyCollection<string> overlaps)
+    {
+        return Error.Conflict(nameof(StudentTimesOverlap),
+            "ჯგუფი არ შეინახება: მის მოსწავლეს იმავე დროს სხვა ჯგუფშიც აქვს გაკვეთილი (რეპორტი „მოსწავლეების " +
+            $"დროების გადაფარვა\"): {OverlapsList(overlaps)}. შეასწორეთ მოსწავლეების ან განრიგის თარიღები, დრო ან " +
+            "კვირის დღე");
+    }
+
+    //პირველი 10 გადაფარვა "; "-ით, მეტისას საერთო რაოდენობაც
+    private static string OverlapsList(IReadOnlyCollection<string> overlaps)
+    {
         const int shownOverlapsCount = 10;
         string list = string.Join("; ", overlaps.Take(shownOverlapsCount));
         if (overlaps.Count > shownOverlapsCount)
@@ -128,8 +147,6 @@ public static class GroupErrors
             list += string.Create(CultureInfo.InvariantCulture, $" და სხვა, სულ {overlaps.Count}");
         }
 
-        return Error.Conflict(nameof(TeacherTimesOverlap),
-            "ჯგუფი არ შეინახება: მის მასწავლებელს იმავე დროს სხვა ჯგუფშიც აქვს გაკვეთილი (რეპორტი „მასწავლებლების " +
-            $"დროების გადაფარვა\"): {list}. შეასწორეთ მასწავლებლების ან განრიგის თარიღები, დრო ან კვირის დღე");
+        return list;
     }
 }

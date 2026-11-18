@@ -72,4 +72,13 @@ public static class LessonErrors
             $"{teacherName} ამ გაკვეთილის დროს სხვა გაკვეთილს ატარებს: {string.Join("; ", lessons)}. ერთი " +
             "მასწავლებელი ერთსა და იმავე დროს ორ გაკვეთილს ვერ ჩაატარებს: შეცვალეთ შემცვლელი ან აღდგენის თარიღი");
     }
+
+    //მოსწავლეების დროების გადაფარვა გაკვეთილებში (D179). lessons: გაკვეთილის მოსწავლეების სხვა გაკვეთილების აღწერები
+    //მოსწავლის სახელით, რომლებიც ამ გაკვეთილის დროს ფარავს
+    public static Error StudentsHaveAnotherLessonAtThisTime(IEnumerable<string> lessons)
+    {
+        return Error.Conflict(nameof(StudentsHaveAnotherLessonAtThisTime),
+            $"გაკვეთილის მოსწავლეებს ამ დროს სხვა გაკვეთილიც აქვთ: {string.Join("; ", lessons)}. ერთი მოსწავლე ერთსა " +
+            "და იმავე დროს ორ გაკვეთილს ვერ დაესწრება: შეცვალეთ აღდგენის თარიღი");
+    }
 }
