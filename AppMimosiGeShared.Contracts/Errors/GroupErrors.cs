@@ -117,6 +117,11 @@ public static class GroupErrors
     public static Error FilterSortRequestIsInvalid =>
         Error.Problem(nameof(FilterSortRequestIsInvalid), "სიის ფილტრის ან დალაგების პარამეტრები არასწორია");
 
+    //D183: ბრძანებების რეჟიმში ჯგუფის შექმნა, შეცვლა და წაშლა მხოლოდ ბრძანებით
+    public static Error GroupsAreManagedByOrders =>
+        Error.Conflict(nameof(GroupsAreManagedByOrders),
+            "ჯგუფი ჯგუფის ფორმით აღარ იქმნება, არ იცვლება და არ იშლება: ჯგუფის ყოველი ცვლილება ბრძანებით კეთდება");
+
     //გაკვეთილების გენერატორის შეცდომები 11 და 14 (რეპორტი r13, D177). lessonDates: დალაგებული, პირველი 10 ჩამოითვლება
     public static Error ChangeCreatesLessonsWithErrors(IReadOnlyCollection<DateTime> lessonDates)
     {

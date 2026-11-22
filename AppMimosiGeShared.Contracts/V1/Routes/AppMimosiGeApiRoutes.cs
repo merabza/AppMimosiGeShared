@@ -87,6 +87,51 @@ public static class AppMimosiGeApiRoutes
         public const string Delete = "/{grpId:int}";
     }
 
+    //ჯგუფების ბრძანებები (GROUP_ORDERS.md, D183–D202): მენიუს პუნქტი groupOrders
+    public static class GroupOrdersRoute
+    {
+        public const string GroupOrdersBase = "/grouporders";
+
+        // GET api/v1/grouporders/rowsdata?filterSortRequest={base64}
+        public const string RowsData = "/rowsdata";
+
+        // GET api/v1/grouporders/formlookups?academicYearId={id}&orderDate=yyyy-MM-dd&grpId={id}&targetGrpId={id}&studentStatusId={id}
+        public const string FormLookups = "/formlookups";
+
+        // GET api/v1/grouporders/mode
+        public const string Mode = "/mode";
+
+        // GET api/v1/grouporders/{orderId:int}
+        public const string GetOne = "/{orderId:int}";
+
+        // GET api/v1/grouporders/{orderId:int}/print
+        public const string Print = "/{orderId:int}/print";
+
+        // POST api/v1/grouporders
+        public const string Create = "";
+
+        // PUT api/v1/grouporders/{orderId:int}
+        public const string Update = "/{orderId:int}";
+
+        // DELETE api/v1/grouporders/{orderId:int}
+        public const string Delete = "/{orderId:int}";
+    }
+
+    //ბრძანებების რეჟიმის ვიზარდები (D194, D195): მენიუს პუნქტი groupOrdersMode, მხოლოდ Admin-ისთვის
+    public static class GroupOrdersModeRoute
+    {
+        public const string GroupOrdersModeBase = "/grouporders/mode";
+
+        // POST api/v1/grouporders/mode/toorders?dryRun={bool}
+        public const string SwitchToGroupOrders = "/toorders";
+
+        // POST api/v1/grouporders/mode/togroups
+        public const string SwitchToGroupEditing = "/togroups";
+
+        // GET api/v1/grouporders/mode/files/{fileName}
+        public const string ExportFile = "/files/{fileName}";
+    }
+
     public static class LessonGeneratorRoute
     {
         public const string LessonGeneratorBase = "/lessongenerator";
