@@ -150,6 +150,12 @@ public static class GroupOrderErrors
         Error.Conflict(nameof(StudentsMustBeAllCurrent),
             "კვირის საათების შეცვლის ბრძანებაში ჯგუფის ყველა მოსწავლე უნდა იყოს, ვინც ბრძანების თარიღზე ჯგუფშია");
 
+    //D206: ბრძანება a-თი ასრულებს მხოლოდ a-მდე დაწყებულ სტრიქონს
+    public static Error RowStartsOnOrderDate =>
+        Error.Conflict(nameof(RowStartsOnOrderDate),
+            "მასწავლებლის ან მოსწავლის სტრიქონი ბრძანების თარიღზე იწყება: ამ დღის ცვლილება იმ ბრძანების შეცვლით " +
+            "კეთდება, რომლითაც სტრიქონი დაიწყო");
+
     //D190 (5)
     public static Error TargetGroupDoesNotMatch =>
         Error.Conflict(nameof(TargetGroupDoesNotMatch),
