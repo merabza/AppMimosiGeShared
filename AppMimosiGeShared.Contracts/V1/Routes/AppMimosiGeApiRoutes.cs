@@ -95,7 +95,8 @@ public static class AppMimosiGeApiRoutes
         // GET api/v1/grouporders/rowsdata?filterSortRequest={base64}
         public const string RowsData = "/rowsdata";
 
-        // GET api/v1/grouporders/formlookups?academicYearId={id}&orderDate=yyyy-MM-dd&grpId={id}&targetGrpId={id}&studentStatusId={id}
+        // GET api/v1/grouporders/formlookups?academicYearId={id}&orderDate=yyyy-MM-dd&grpId={id}&targetGrpId={id}
+        //     &studentStatusId={id}&courseId={id}&groupSizeId={id}&orderId={id}
         public const string FormLookups = "/formlookups";
 
         // GET api/v1/grouporders/mode

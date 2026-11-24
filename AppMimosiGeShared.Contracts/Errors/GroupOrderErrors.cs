@@ -104,6 +104,16 @@ public static class GroupOrderErrors
     public static Error InitialOrderCannotBeDeleted =>
         Error.Conflict(nameof(InitialOrderCannotBeDeleted), "საწყისი ბრძანება არ იშლება");
 
+    //D193
+    public static Error InitialOrderIsNotPrinted =>
+        Error.Conflict(nameof(InitialOrderIsNotPrinted), "საწყისი ბრძანება არ იბეჭდება");
+
+    //D215: დაპაუზებული შექმნის ბრძანება გააქტიურებამდე არ იბეჭდება
+    public static Error PausedOrderIsNotPrinted =>
+        Error.Conflict(nameof(PausedOrderIsNotPrinted),
+            "დაპაუზებული ბრძანება არ იბეჭდება, რადგან ჯერ არ მოქმედებს: მასწავლებლისა და განრიგის შევსების შემდეგ " +
+            "ის იმავე ნომრით დაიბეჭდება");
+
     //D184: დაპაუზებული ბრძანება ძველი თარიღით არ ინახება
     public static Error PausedOrderDateIsInPast =>
         Error.Conflict(nameof(PausedOrderDateIsInPast),
