@@ -39,6 +39,10 @@ public static class GroupOrderErrors
     public static Error TargetGroupIsSourceGroup =>
         Error.Problem(nameof(TargetGroupIsSourceGroup), "მოსწავლეები იმავე ჯგუფში ვერ გადავლენ");
 
+    //შეცვლისას არსებული ხაზი თავის Id-ს ინარჩუნებს; სხვა ბრძანების ხაზი ამ ბრძანებაში ვერ მოხვდება
+    public static Error LineNotFound =>
+        Error.Problem(nameof(LineNotFound), "მასწავლებლის, მოსწავლის ან განრიგის ხაზი ამ ბრძანებას არ ეკუთვნის");
+
     //GROUP_ORDERS.md §4: ბრძანების ნაწილები მის ტიპზეა დამოკიდებული
     public static Error PartIsNotAllowedForOrderType =>
         Error.Problem(nameof(PartIsNotAllowedForOrderType),
@@ -186,6 +190,11 @@ public static class GroupOrderErrors
     public static Error CreateOrderHasSalary =>
         Error.Conflict(nameof(CreateOrderHasSalary),
             "ჯგუფის შექმნის ბრძანება ვერ წაიშლება: ჯგუფის გაკვეთილები ხელფასის დათვლაშია");
+
+    //D214: ერთდროული შენახვისას მეორე შენახვა მთლიანად უარყოფილია (ნომრის მთვლელი, წაშლილი ბრძანება)
+    public static Error OrderSavedConcurrently =>
+        Error.Conflict(nameof(OrderSavedConcurrently),
+            "ცვლილება არ შეინახა: ამავე დროს სხვა ბრძანება შეინახა ან წაიშალა. სცადეთ ხელახლა");
 
     //D194, ვიზარდი 1
     public static Error GroupOrdersAreAlreadyEnabled =>
