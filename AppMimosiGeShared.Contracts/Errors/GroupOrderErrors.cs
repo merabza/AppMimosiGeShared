@@ -210,11 +210,10 @@ public static class GroupOrderErrors
     public static Error GroupOrdersAreAlreadyEnabled =>
         Error.Conflict(nameof(GroupOrdersAreAlreadyEnabled), "ბრძანებებზე გადასვლა უკვე გაკეთებულია");
 
-    //D194, ვიზარდი 1: დარღვევები შემოწმების რეპორტშია
-    public static Error SwitchHasViolations =>
-        Error.Conflict(nameof(SwitchHasViolations),
-            "ბრძანებებზე გადასვლა შეუძლებელია: ჯგუფებში დარღვევებია. გაასწორეთ შემოწმების რეპორტის დარღვევები და " +
-            "გაიმეორეთ");
+    //D221, ვიზარდები: ერთდროული გაშვებისას, ან როცა ამ დროს ჯგუფის სტრიქონი შეიცვალა, მეორე მთლიანად უარყოფილია
+    public static Error ModeSwitchedConcurrently =>
+        Error.Conflict(nameof(ModeSwitchedConcurrently),
+            "რეჟიმი არ შეიცვალა: ამავე დროს რეჟიმი, ბრძანება ან ჯგუფი შეიცვალა. შეამოწმეთ რეჟიმი და სცადეთ ხელახლა");
 
     //D195, ვიზარდი 2
     public static Error GroupOrdersAreAlreadyDisabled =>
@@ -238,6 +237,15 @@ public static class GroupOrderErrors
         return Error.Conflict(nameof(OrderNoLongerFits),
             $"ცვლილება შეუძლებელია: მის შემდეგ ბრძანება № {orderNumber} ჯგუფის მდგომარეობას აღარ ესადაგება " +
             "(მაგალითად, მის თარიღზე მოსწავლე ჯგუფში აღარ იქნებოდა). ჯერ ის ბრძანება შეცვალეთ ან წაშალეთ");
+    }
+
+    //D197, D220: წლის დახურვისას ჯერ ყველა ჯგუფი მოწმდება და, თუ ერთს მაინც ბრძანება 7 ვერ ექმნება, არცერთი არ
+    //იხურება. groups: „კოდი — მიზეზი" ჯგუფების რიგით, პირველი 10 ჩამოითვლება
+    public static Error GroupsCannotBeClosed(IReadOnlyCollection<string> groups)
+    {
+        return Error.Conflict(nameof(GroupsCannotBeClosed),
+            "წლის ჯგუფების დახურვა შეჩერდა: ამ ჯგუფებს დახურვის ბრძანება ვერ შეექმნება. გაასწორეთ და გაიმეორეთ: " +
+            RowsList(groups));
     }
 
     //D187, D194: საათების ფორმულა გადასვლის დღიდან. rows: დარღვეული სტრიქონების აღწერები რიგით, პირველი 10 ჩამოითვლება
